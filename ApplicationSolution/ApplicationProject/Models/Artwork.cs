@@ -13,6 +13,6 @@ namespace ApplicationProject.Models
         public DateTime DateOfCreation { get; set; }
         public string Description { get; set; }
         public int JobID { get; set; }
-        public Job Job { get; set; }
+        public virtual Job Job { get; set; }
     }
 }

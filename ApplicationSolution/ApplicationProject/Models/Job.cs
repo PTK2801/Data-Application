@@ -12,7 +12,7 @@ namespace ApplicationProject.Models
         public string Description { get; set; }
         public int Salary { get; set; }
         public int OrderID { get; set; }
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
         public List<Artwork> Artworks { get; set; }
     }
 }

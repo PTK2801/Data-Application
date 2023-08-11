@@ -1,0 +1,57 @@
+﻿@model ApplicationProject.Models.Job
+
+@{
+    ViewBag.Title = "Details of the Job";
+}
+
+<h2>Details of the Job</h2>
+
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JobID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
