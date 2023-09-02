@@ -8,7 +8,7 @@ namespace ApplicationProject.Models
 {
     public class Client
     {
-        public int ClientID { get; set; }
+        public int ClientId { get; set; }
 
 
         [RegularExpression(@"^[a-zA-Z''-'\s]{2,50}$", ErrorMessage = "Name field should only contain between 2 and 50 Letters and spaces included.")]

@@ -7,12 +7,19 @@
 <h2>Jobs</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create a Job", "Create", "", new { @class = "btn btn-default blueColor" })
 </p>
+
+@if (Model.Count() == 0)
+{
+    <h4>No Jobs found.</h4>
+}
+else
+{
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.JobID)
+            @Html.DisplayNameFor(model => model.JobId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -24,15 +31,16 @@
             @Html.DisplayNameFor(model => model.Salary)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderID)
+            @Html.DisplayName("Order Number")
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+  @foreach (var item in Model)
+  {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.JobID)
+            @Html.DisplayFor(modelItem => item.JobId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -44,14 +52,14 @@
             @Html.DisplayFor(modelItem => item.Salary)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderID)
+            @Html.DisplayFor(modelItem => item.Order.OrderNumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.JobId }, new { @class = "btn btn-default orangeColor" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.JobId }, new { @class = "btn btn-default blueColor" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.JobId }, new { @class = "btn btn-default redColor" })
         </td>
     </tr>
-}
-
+  }
 </table>
+}

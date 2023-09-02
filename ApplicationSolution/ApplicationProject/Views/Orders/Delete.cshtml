@@ -12,11 +12,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.OrderID)
+            @Html.DisplayNameFor(model => model.OrderId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderID)
+            @Html.DisplayFor(model => model.OrderId)
         </dd>
 
         <dt>
@@ -43,21 +43,24 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ClientID)
+            @Html.DisplayName("Client Name")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClientID)
+            @Html.DisplayFor(model => model.Client.Name)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default redColor" /> 
+
         </div>
+        <br />
+        @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-default blueColor" })
     }
 </div>

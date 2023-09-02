@@ -10,7 +10,8 @@ namespace ApplicationProject.Models
     
     public class Order
     {
-        public int OrderID { get; set; }
+        
+        public int OrderId { get; set; }
 
         [Display(Name = "Order Number")]
         [Required]
@@ -25,14 +26,10 @@ namespace ApplicationProject.Models
         [Required]
         public string Status { get; set; }
 
-        [Required]
-        public int ClientID { get; set; }
+        [Required(ErrorMessage = "The Name field is required.")]
+        public int ClientId { get; set; }
         public virtual Client Client { get; set; }
         public List<Job> Jobs { get; set; }
 
     }
-}
-public enum TheStatus
-{
-    Ready, In_Progress
 }

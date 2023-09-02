@@ -1,0 +1,69 @@
+﻿@model ApplicationProject.Models.Order
+<!DOCTYPE html>
+
+
+
+    <div class="modal fade" id="createOrder" role="dialog" style="width:100%">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="createOrderlabel">Order</h4>
+                    <button type="button" class="close btn btn-primary" data-bs-dismiss="modal" style="background-color:rgb(255, 0, 0);font-size:18px;color:white;font-weight:600">x</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h5>Create a Order</h5>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderNumber, htmlAttributes: new { @class = "control-label col-md-2", style = " width:100%" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OrderNumber, new { htmlAttributes = new { @class = "form-control", style = " border:2px solid grey" } })
+                                @Html.ValidationMessageFor(model => model.OrderNumber, "The Order Number field is required", new { @class = "text-danger", style = " display:none" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderDate, htmlAttributes: new { @class = "control-label col-md-2", style = " width:100%" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control", style = " border:2px solid grey" } })
+                                @Html.ValidationMessageFor(model => model.OrderDate, "The Order Date field is required", new { @class = "text-danger", style = " display:none" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Status, new List<SelectListItem> { new SelectListItem { Text = "Ready", Value = "Ready" }, { new SelectListItem { Text = "In Progress", Value = "In Progress" } } }, optionLabel: "Select status", htmlAttributes: new { @class = "form-control", style = " border:2px solid grey" })
+                                @Html.ValidationMessageFor(model => model.Status, "The Status field is required", new { @class = "text-danger", style = " display:none" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Client.Name, "Client Name", htmlAttributes: new { @class = "control-label col-md-2", style = " width:100%" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.ClientId, null, htmlAttributes: new { @class = "form-control", style = " border:2px solid grey" })
+                                @Html.ValidationMessageFor(model => model.ClientId, "The Client Name field is required", new { @class = "text-danger", style = " display:none" })
+                            </div>
+                        </div>
+                        <br />
+
+                    </div>
+                    }
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" style="background-color:limegreen;color:white">Create</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btnCancel" style="background-color:dodgerblue">Cancel</button>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+

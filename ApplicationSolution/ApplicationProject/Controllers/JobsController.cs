@@ -40,7 +40,7 @@ namespace ApplicationProject.Controllers
         // GET: Jobs/Create
         public ActionResult Create()
         {
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID");
+            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderNumber");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace ApplicationProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "JobID,Title,Description,Salary,OrderID")] Job job)
+        public ActionResult Create([Bind(Include = "JobId,Title,Description,Salary,OrderId")] Job job)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace ApplicationProject.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID", job.OrderID);
+            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderNumber", job.OrderId);
             return View(job);
         }
 
@@ -82,7 +82,7 @@ namespace ApplicationProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID", job.OrderID);
+            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderNumber", job.OrderId);
             return View(job);
         }
 
@@ -98,7 +98,7 @@ namespace ApplicationProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var jobUpdate = db.Jobs.Find(id);
-            if (TryUpdateModel(jobUpdate, "", new string[] { "JobID", "Title", "Description", "Salary", "OrderID" }))
+            if (TryUpdateModel(jobUpdate, "", new string[] { "JobId", "Title", "Description", "Salary", "OrderId" }))
             {
                 try
                 {
@@ -111,7 +111,7 @@ namespace ApplicationProject.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 }
             }
-            ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "OrderID", jobUpdate.OrderID);
+            ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderNumber", jobUpdate.OrderId);
             return View(jobUpdate);
         }
 

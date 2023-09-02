@@ -7,12 +7,19 @@
 <h2>Artworks</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create a Artwork", "Create", "", new { @class = "btn btn-default blueColor" })
 </p>
+
+@if (Model.Count() == 0)
+{
+    <h4>No Artworks found.</h4>
+}
+else
+{
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ArtworkID)
+            @Html.DisplayNameFor(model => model.ArtworkId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -27,15 +34,16 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.JobID)
+            @Html.DisplayName("Job Title")
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+  @foreach (var item in Model)
+  {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ArtworkID)
+            @Html.DisplayFor(modelItem => item.ArtworkId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -50,14 +58,14 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.JobID)
+            @Html.DisplayFor(modelItem => item.Job.Title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ArtworkID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ArtworkID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ArtworkID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ArtworkId }, new { @class = "btn btn-default orangeColor" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ArtworkId }, new { @class = "btn btn-default blueColor" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ArtworkId }, new { @class = "btn btn-default redColor" })
         </td>
     </tr>
-}
-
+   }
 </table>
+}

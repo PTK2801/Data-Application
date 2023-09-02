@@ -8,7 +8,7 @@ namespace ApplicationProject.Models
 {
     public class Job
     {
-        public int JobID { get; set; }
+        public int JobId { get; set; }
 
 
         [StringLength(50, MinimumLength = 3)]
@@ -26,8 +26,9 @@ namespace ApplicationProject.Models
         [Required]
         public int Salary { get; set; }
 
-        [Required]
-        public int OrderID { get; set; }
+        
+        [Required(ErrorMessage = "The Order Number field is required.")]
+        public int OrderId { get; set; }
         public virtual Order Order { get; set; }
         public List<Artwork> Artworks { get; set; }
     }

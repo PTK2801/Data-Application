@@ -38,18 +38,22 @@ namespace ApplicationProject.Controllers
         }
 
         // GET: Orders/Create
+        
         public ActionResult Create()
         {
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "ClientID");
-            return View();
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name");
+            //return View();
+            return PartialView("PartialViewOrder");
         }
+        
+
 
         // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderID,OrderNumber,OrderDate,Status,ClientID")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,OrderNumber,OrderDate,Status,ClientId")] Order order)
         {
             try
             {
@@ -66,9 +70,12 @@ namespace ApplicationProject.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "ClientID", order.ClientID);
-            return View(order);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", order.ClientId);
+            return PartialView("PartialViewOrder", order);
+            
         }
+       
+        
 
         // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
@@ -82,7 +89,7 @@ namespace ApplicationProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "ClientID", order.ClientID);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", order.ClientId);
             return View(order);
         }
 
@@ -98,7 +105,7 @@ namespace ApplicationProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var orderUpdate = db.Orders.Find(id);
-            if (TryUpdateModel(orderUpdate, "", new string[] { "OrderID", "OrderNumber", "OrderDate", "Status", "ClientID" })) {
+            if (TryUpdateModel(orderUpdate, "", new string[] { "OrderId", "OrderNumber", "OrderDate", "Status", "ClientId" })) {
                 try
                 {
                     db.SaveChanges();
@@ -110,7 +117,7 @@ namespace ApplicationProject.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 }
             }
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "ClientID", orderUpdate.ClientID);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", orderUpdate.ClientId);
             return View(orderUpdate);
         }
 

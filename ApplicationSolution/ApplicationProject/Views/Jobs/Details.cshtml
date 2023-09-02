@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.JobID)
+            @Html.DisplayNameFor(model => model.JobId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.JobID)
+            @Html.DisplayFor(model => model.JobId)
         </dd>
 
         <dt>
@@ -42,16 +42,15 @@
             @Html.DisplayFor(model => model.Salary)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.OrderID)
+            @Html.DisplayName("Order Number")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderID)
+            @Html.DisplayFor(model => model.Order.OrderNumber)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.JobID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-default blueColor" })
 </p>

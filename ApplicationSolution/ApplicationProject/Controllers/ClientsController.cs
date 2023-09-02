@@ -47,7 +47,7 @@ namespace ApplicationProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,Name,DateOfBirth,Address,PhoneNumber")] Client client)
+        public ActionResult Create([Bind(Include = "ClientId,Name,DateOfBirth,Address,PhoneNumber")] Client client)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace ApplicationProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var clientUpdate = db.Clients.Find(id);
-            if (TryUpdateModel(clientUpdate, "", new string[] { "ClientID", "Name", "DateOfBirth", "Address", "PhoneNumber" }))
+            if (TryUpdateModel(clientUpdate, "", new string[] { "ClientId", "Name", "DateOfBirth", "Address", "PhoneNumber" }))
             {
                 try
                 {

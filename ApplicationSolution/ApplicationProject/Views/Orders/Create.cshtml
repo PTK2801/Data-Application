@@ -34,22 +34,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Status, new SelectList(Enum.GetValues(typeof(TheStatus))), "Set status", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Status, new List<SelectListItem> { new SelectListItem { Text = "Ready", Value = "Ready" }, { new SelectListItem { Text = "In Progress", Value = "In Progress" } } }, optionLabel: "Select status", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ClientID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Client.Name, "Client Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ClientID, null , htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.ClientId, null , htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br/>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" style="background-color:gainsboro" />
             </div>
         </div>
     </div>

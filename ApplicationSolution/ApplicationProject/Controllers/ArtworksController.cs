@@ -40,7 +40,7 @@ namespace ApplicationProject.Controllers
         // GET: Artworks/Create
         public ActionResult Create()
         {
-            ViewBag.JobID = new SelectList(db.Jobs, "JobID", "JobID");
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "Title");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace ApplicationProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ArtworkID,Title,NameOfCreator,DateOfCreation,Description,JobID")] Artwork artwork)
+        public ActionResult Create([Bind(Include = "ArtworkId,Title,NameOfCreator,DateOfCreation,Description,JobId")] Artwork artwork)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace ApplicationProject.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            ViewBag.JobID = new SelectList(db.Jobs, "JobID", "JobID", artwork.JobID);
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "Title", artwork.JobId);
             return View(artwork);
         }
 
@@ -82,7 +82,7 @@ namespace ApplicationProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.JobID = new SelectList(db.Jobs, "JobID", "JobID", artwork.JobID);
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "Title", artwork.JobId);
             return View(artwork);
         }
 
@@ -98,7 +98,7 @@ namespace ApplicationProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var artworkUpdate = db.Artworks.Find(id);
-            if (TryUpdateModel(artworkUpdate, "", new string[] { "ArtworkID", "Title", "NameOfCreator", "DateOfCreation", "Description", "JobID" }))
+            if (TryUpdateModel(artworkUpdate, "", new string[] { "ArtworkId", "Title", "NameOfCreator", "DateOfCreation", "Description", "JobId" }))
             {
                 try
                 {
@@ -111,7 +111,7 @@ namespace ApplicationProject.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
                 }
             }
-            ViewBag.JobID = new SelectList(db.Jobs, "JobID", "JobID", artworkUpdate.JobID);
+            ViewBag.JobId = new SelectList(db.Jobs, "JobId", "Title", artworkUpdate.JobId);
             return View(artworkUpdate);
         }
 

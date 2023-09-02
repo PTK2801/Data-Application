@@ -9,7 +9,7 @@ namespace ApplicationProject.Models
 {
     public class Artwork
     {
-        public int ArtworkID { get; set; }
+        public int ArtworkId { get; set; }
         
         
         [StringLength(50, MinimumLength = 3)]
@@ -33,8 +33,9 @@ namespace ApplicationProject.Models
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public int JobID { get; set; }
+
+        [Required(ErrorMessage = "The Job Title field is required.")]
+        public int JobId { get; set; }
 
         public virtual Job Job { get; set; }
     }
