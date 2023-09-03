@@ -60,15 +60,15 @@
                      $('#Status').next('span').hide();
                      $('#Status').css('border', '2px solid grey');
                  }
-                 if ($('#Client_Name').val().trim() == '') {
-                     $('#Client_Name').next('span').show();
-                     $('#Client_Name').css('border', '2px solid red');
+                 if ($('#ClientId').val().trim() == '' ) {
+                     $('#ClientId').next('span').show();
+                     $('#ClientId').css('border', '2px solid red');
                      placeHolder.find('.modal').modal('show');
                      
                 }
                  else {
-                     $('#Client_Name').next('span').hide();
-                     $('#Client_Name').css('border', '2px solid grey');
+                     $('#ClientId').next('span').hide();
+                     $('#ClientId').css('border', '2px solid grey');
                  }
                  
                 });
@@ -78,7 +78,7 @@
 <h2>Orders</h2>
 
 <div id="PlaceHolder"></div>
-<button type="button" class="btn btn-default blueColor" data-toggle="modal" data-target="#createOrder" data-url="@Url.Action("Create")">Create a Order</button>
+<p><button type="button" class="btn btn-default blueColor" data-toggle="modal" data-target="#createOrder" data-url="@Url.Action("Create")">Create a Order</button></p>
 
 
 <!--

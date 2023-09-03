@@ -44,9 +44,9 @@
                         </div>
                         <br />
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Client.Name, "Client Name", htmlAttributes: new { @class = "control-label col-md-2", style = " width:100%" })
+                            @Html.LabelFor(model => model.ClientId, "Client Name", htmlAttributes: new { @class = "control-label col-md-2", style = " width:100%" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.ClientId, null, htmlAttributes: new { @class = "form-control", style = " border:2px solid grey" })
+                                @Html.DropDownListFor(model => model.ClientId, null, optionLabel: "Select Client name" , htmlAttributes: new { @class = "form-control", style = " border:2px solid grey" })
                                 @Html.ValidationMessageFor(model => model.ClientId, "The Client Name field is required", new { @class = "text-danger", style = " display:none" })
                             </div>
                         </div>
