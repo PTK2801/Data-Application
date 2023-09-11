@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ApplicationProject.DAL;
+using ApplicationProject.MapConfig;
 using ApplicationProject.Models;
 
 namespace ApplicationProject.Controllers
@@ -41,11 +43,12 @@ namespace ApplicationProject.Controllers
         
         public ActionResult Create()
         {
-            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name");
+            
             //return View();
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name");
             return PartialView("PartialViewOrder");
         }
-        
+
 
 
         // POST: Orders/Create
@@ -53,29 +56,69 @@ namespace ApplicationProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,OrderNumber,OrderDate,Status,ClientId")] Order order)
+        public async Task<ActionResult> Create(ApplicationDTO model)
         {
-            try
-            {
-                if (ModelState.IsValid)
+
+
+            //try
+            //{
+            /*
+            Order order = new Order {
+                OrderId = model.OrderModel.OrderId,
+                OrderNumber = model.OrderModel.OrderNumber,
+                OrderDate = model.OrderModel.OrderDate,
+                Status = model.OrderModel.Status,
+                ClientId = model.OrderModel.ClientId,
+                Jobs = new Job
                 {
-                    db.Orders.Add(order);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    Title = model.JobModel.Title,
+                    Description = model.JobModel.Description,
+                    Artworks = new Artwork
+                    {
+                        Title = model.ArtworkModel.Title,
+                        Description = model.ArtworkModel.Description
+                    }
                 }
-            }
-            catch (DataException)
+            };
+            */
+            var mapping = MappingConfiguration.InitializeAutoMapper();
+            var theOrder = mapping.Map<OrderDTO, Order>(model.OrderModel);
+
+            if (!ModelState.IsValid)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log).
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
+            else
+            {
 
-            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", order.ClientId);
-            return PartialView("PartialViewOrder", order);
+                db.Orders.Add(theOrder);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+        //}
+                
+            //}
+           // catch (DataException)
+            //{
+            /*
+                if (!ModelState.IsValid)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log).
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                }
+            */
+             //}
+
+            
+
+            ViewBag.ClientId = db.Clients.ToList();
+            return PartialView(model);
             
         }
-       
-        
+
+
+
 
         // GET: Orders/Edit/5
         public ActionResult Edit(int? id)

@@ -19,7 +19,7 @@ namespace ApplicationProject.Models
 
         [Display(Name = "Order Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}" , ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime OrderDate { get; set; }
 
@@ -31,5 +31,6 @@ namespace ApplicationProject.Models
         public virtual Client Client { get; set; }
         public List<Job> Jobs { get; set; }
 
+        
     }
 }

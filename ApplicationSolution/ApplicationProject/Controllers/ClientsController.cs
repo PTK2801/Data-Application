@@ -4,10 +4,13 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ApplicationProject.DAL;
+using ApplicationProject.MapConfig;
 using ApplicationProject.Models;
+using AutoMapper.QueryableExtensions;
 
 namespace ApplicationProject.Controllers
 {
@@ -19,6 +22,7 @@ namespace ApplicationProject.Controllers
         public ActionResult Index()
         {
             return View(db.Clients.ToList());
+          
         }
 
         // GET: Clients/Details/5
@@ -47,24 +51,31 @@ namespace ApplicationProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientId,Name,DateOfBirth,Address,PhoneNumber")] Client client)
+        public async Task<ActionResult> Create(ApplicationDTO model)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Clients.Add(client);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (DataException)
-            {
+            // try
+            // {
+
+            // }
+            // catch (DataException)
+            // {
+
+            var mapping = MappingConfiguration.InitializeAutoMapper();
+            var theClient = mapping.Map<ClientDTO, Client>(model.ClientModel);
+               if (!ModelState.IsValid) {
                 //Log the error (uncomment dex variable name and add a line here to write a log).
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
+               }
+              else
+              {
+                db.Clients.Add(theClient);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+              }
+            // }
 
-            return View(client);
+
+            return View(model);
         }
 
         // GET: Clients/Edit/5

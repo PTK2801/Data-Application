@@ -38,5 +38,10 @@ namespace ApplicationProject.Models
         public int JobId { get; set; }
 
         public virtual Job Job { get; set; }
+
+        public static implicit operator List<Artwork>(Artwork v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model ApplicationProject.Models.Order
+﻿@model ApplicationProject.Models.ApplicationDTO
 
 @{
     ViewBag.Title = "Delete the Order";
@@ -12,42 +12,42 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.OrderId)
+            @Html.DisplayNameFor(model => model.OrderModel.OrderId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderId)
+            @Html.DisplayFor(model => model.OrderModel.OrderId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderNumber)
+            @Html.DisplayNameFor(model => model.OrderModel.OrderNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderNumber)
+            @Html.DisplayFor(model => model.OrderModel.OrderNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderDate)
+            @Html.DisplayNameFor(model => model.OrderModel.OrderDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderDate)
+            @Html.DisplayFor(model => model.OrderModel.OrderDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.OrderModel.Status)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.OrderModel.Status)
         </dd>
         <dt>
             @Html.DisplayName("Client Name")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Client.Name)
+            @Html.DisplayFor(model => model.ClientModel.Name)
         </dd>
 
     </dl>

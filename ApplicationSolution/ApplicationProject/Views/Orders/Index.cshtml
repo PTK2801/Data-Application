@@ -6,73 +6,74 @@
 
 
 <script type="text/javascript">
-        $(function () {
-            var placeHolder = $('#PlaceHolder');
-            $('button[data-toggle="modal"]').click(function (event) {
+    $(function () {
+        var placeHolder = $('#PlaceHolder');
+        $('button[data-toggle="modal"]').click(function (event) {
 
-                var url = $(this).data('url');
-                $.get(url).done(function (data) {
-                    placeHolder.html(data);
-                    placeHolder.find('.modal').modal('show');
-                });
-             });
-
-            placeHolder.on('click', 'button[class="btn btn-default"]', function (event) {
-
-               if (($('#OrderNumber').val() != '') && ($('#OrderDate').val() != '') && ($('#Status').val() != '') && ($('#Client_Name').val() != '')) {
-                    var getForm = $(this).parents('.modal').find('form');
-                    var getUrl = getForm.attr('action');
-                    var theData = getForm.serialize();
-                    $.post(getUrl, theData).done(function (data) {
-                        placeHolder.find('.modal').modal('hide');
-                        location.reload(true);
-                    });
-
-               }
-               
-                if ($('#OrderNumber').val().trim() == '') {
-                    $('#OrderNumber').next('span').show();
-                    $('#OrderNumber').css('border', '2px solid red');
-                    placeHolder.find('.modal').modal('show');
-
-                }
-                else {
-                    $('#OrderNumber').next('span').hide();
-                    $('#OrderNumber').css('border', '2px solid grey');
-                }
-                 if ($('#OrderDate').val().trim() == '') {
-                     $('#OrderDate').next('span').show();
-                     $('#OrderDate').css('border', '2px solid red');
-                     placeHolder.find('.modal').modal('show');
-                     
-                }
-                 else {
-                     $('#OrderDate').next('span').hide();
-                     $('#OrderDate').css('border', '2px solid grey');
-                 }
-                 if ($('#Status').val().trim() == '') {
-                     $('#Status').next('span').show();
-                     $('#Status').css('border', '2px solid red');
-                     placeHolder.find('.modal').modal('show');
-                     
-                }
-                 else {
-                     $('#Status').next('span').hide();
-                     $('#Status').css('border', '2px solid grey');
-                 }
-                 if ($('#ClientId').val().trim() == '' ) {
-                     $('#ClientId').next('span').show();
-                     $('#ClientId').css('border', '2px solid red');
-                     placeHolder.find('.modal').modal('show');
-                     
-                }
-                 else {
-                     $('#ClientId').next('span').hide();
-                     $('#ClientId').css('border', '2px solid grey');
-                 }
-                 
-                });
+            var url = $(this).data('url');
+            $.get(url).done(function (data) {
+                placeHolder.html(data);
+                placeHolder.find('.modal').modal('show');
             });
+        });
+
+        placeHolder.on('click', 'button[class="btn btn-default"]', function (event) {
+
+            if (($('#OrderNumber').val() != '') && ($('#OrderDate').val() != '') && ($('#Status').val() != '') && ($('#Client_Name').val() != '')) {
+                var getForm = $(this).parents('.modal').find('form');
+                var getUrl = getForm.attr('action');
+                var theData = getForm.serialize();
+                $.post(getUrl, theData).done(function (data) {
+                    placeHolder.find('.modal').modal('hide');
+                    location.reload(true);
+                });
+
+            }
+            /*
+            if ($('#OrderNumber').val().trim() == '') {
+                $('#OrderNumber').next('span').show();
+                $('#OrderNumber').css('border', '2px solid red');
+                placeHolder.find('.modal').modal('show');
+
+            }
+            else {
+                $('#OrderNumber').next('span').hide();
+                $('#OrderNumber').css('border', '2px solid grey');
+            }
+            if ($('#OrderDate').val().trim() == '') {
+                $('#OrderDate').next('span').show();
+                $('#OrderDate').css('border', '2px solid red');
+                placeHolder.find('.modal').modal('show');
+
+            }
+            else {
+                $('#OrderDate').next('span').hide();
+                $('#OrderDate').css('border', '2px solid grey');
+            }
+            if ($('#Status').val().trim() == '') {
+                $('#Status').next('span').show();
+                $('#Status').css('border', '2px solid red');
+                placeHolder.find('.modal').modal('show');
+
+            }
+            else {
+                $('#Status').next('span').hide();
+                $('#Status').css('border', '2px solid grey');
+            }
+            if ($('#ClientId').val().trim() == '') {
+                $('#ClientId').next('span').show();
+                $('#ClientId').css('border', '2px solid red');
+                placeHolder.find('.modal').modal('show');
+
+            }
+            else {
+                $('#ClientId').next('span').hide();
+                $('#ClientId').css('border', '2px solid grey');
+            }
+        });
+        */
+        });
+       });
 </script>
 
 <h2>Orders</h2>

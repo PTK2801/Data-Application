@@ -31,5 +31,10 @@ namespace ApplicationProject.Models
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }
         public List<Artwork> Artworks { get; set; }
+
+        public static implicit operator List<Job>(Job v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
