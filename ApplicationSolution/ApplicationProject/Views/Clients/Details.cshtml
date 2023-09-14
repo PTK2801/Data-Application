@@ -1,4 +1,4 @@
-﻿@model ApplicationProject.Models.ApplicationDTO
+﻿@model ApplicationProject.Models.Client
 
 @{
     ViewBag.Title = "Details of the Client";
@@ -11,42 +11,42 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ClientModel.ClientId)
+            @Html.DisplayNameFor(model => model.ClientId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClientModel.ClientId)
+            @Html.DisplayFor(model => model.ClientId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ClientModel.Name)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClientModel.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ClientModel.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClientModel.DateOfBirth)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClientModel.Address)
+            @Html.DisplayNameFor(model => model.DateOfBirth)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClientModel.Address)
+            @Html.DisplayFor(model => model.DateOfBirth)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ClientModel.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClientModel.PhoneNumber)
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
 
     </dl>

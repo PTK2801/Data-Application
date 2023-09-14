@@ -14,21 +14,37 @@
             $.get(url).done(function (data) {
                 placeHolder.html(data);
                 placeHolder.find('.modal').modal('show');
+                //form.removeData('validator');
+                //form.removeData('unobtrusiveValidation');
+                //$.validator.unobtrusive.parse(form);
             });
+
+            
         });
-
-        placeHolder.on('click', 'button[class="btn btn-default"]', function (event) {
-
-            if (($('#OrderNumber').val() != '') && ($('#OrderDate').val() != '') && ($('#Status').val() != '') && ($('#Client_Name').val() != '')) {
-                var getForm = $(this).parents('.modal').find('form');
-                var getUrl = getForm.attr('action');
-                var theData = getForm.serialize();
-                $.post(getUrl, theData).done(function (data) {
+        
+        placeHolder.on('submit', 'button[class="btn btn-default"]', function (event) {
+           
+            var form = placeHolder.parents('.modal').find('form');
+            //form.removeData('validator');
+            //form.removeData('unobtrusiveValidation');
+            $.validator.unobtrusive.parse(form);
+            form.validate();
+            if (form.valid()) {
+                //if (($('#OrderNumber').val() != '') && ($('#OrderDate').val() != '') && ($('#Status').val() != '') && ($('#Client_Name').val() != '')) {
+                //var getForm = $(this).parents('.modal').find('form');
+                //getForm.removeData('validator');
+                //getForm.removeData('unobtrusiveValidation');
+                //$.validator.unobtrusive.parse(getForm);
+                var getUrl = form.attr('action');
+                var theData = form.serialize();
+                $.post(getUrl, theData, function (data) {
                     placeHolder.find('.modal').modal('hide');
-                    location.reload(true);
+                        //location.reload(true);
                 });
-
             }
+            
+
+          //  }
             /*
             if ($('#OrderNumber').val().trim() == '') {
                 $('#OrderNumber').next('span').show();

@@ -229,8 +229,7 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
-    <Content Include="Views\Orders\PartialViewOrder.cshtml" />
-    <Content Include="Views\Shared\OrderPartialView.cshtml" />
+    <Content Include="Views\Orders\_PartialViewOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

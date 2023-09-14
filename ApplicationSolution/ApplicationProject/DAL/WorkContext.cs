@@ -1,4 +1,5 @@
 ﻿using ApplicationProject.Models;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Web;
@@ -9,7 +10,8 @@ namespace ApplicationProject.DAL
     {
         public WorkContext() : base("WorkContext")
         {
-
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            AppDomain.CurrentDomain.SetData("DataDirectory", path);
         }
 
         public DbSet<Artwork> Artworks { get; set; }
@@ -17,5 +19,8 @@ namespace ApplicationProject.DAL
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Order> Orders { get; set; }
 
+       
+
     }
+    
 }

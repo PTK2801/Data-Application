@@ -43,10 +43,10 @@ namespace ApplicationProject.Controllers
         
         public ActionResult Create()
         {
-            
+
             //return View();
-            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name");
-            return PartialView("PartialViewOrder");
+            ViewBag.ClientId = db.Clients;
+            return PartialView("_PartialViewOrder");
         }
 
 
@@ -84,18 +84,13 @@ namespace ApplicationProject.Controllers
             var mapping = MappingConfiguration.InitializeAutoMapper();
             var theOrder = mapping.Map<OrderDTO, Order>(model.OrderModel);
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                //Log the error (uncomment dex variable name and add a line here to write a log).
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-            }
-            else
-            {
-
                 db.Orders.Add(theOrder);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            
         //}
                 
             //}
@@ -112,8 +107,8 @@ namespace ApplicationProject.Controllers
 
             
 
-            ViewBag.ClientId = db.Clients.ToList();
-            return PartialView(model);
+            ViewBag.ClientId = db.Clients;
+            return PartialView("_PartialViewOrder", model);
             
         }
 

@@ -62,17 +62,14 @@ namespace ApplicationProject.Controllers
 
             var mapping = MappingConfiguration.InitializeAutoMapper();
             var theClient = mapping.Map<ClientDTO, Client>(model.ClientModel);
-               if (!ModelState.IsValid) {
-                //Log the error (uncomment dex variable name and add a line here to write a log).
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-               }
-              else
-              {
+               if (ModelState.IsValid) {
+
                 db.Clients.Add(theClient);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
-              }
-            // }
+               }
+              
+         
 
 
             return View(model);

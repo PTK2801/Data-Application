@@ -10,7 +10,7 @@ namespace ApplicationProject
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*", "~/Scripts/jquery.validate.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.unobtrusive*", "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom-validator").Include("~/Scripts/script-custom-validator.js"));
 
