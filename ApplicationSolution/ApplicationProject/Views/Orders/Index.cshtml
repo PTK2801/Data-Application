@@ -5,93 +5,6 @@
 }
 
 
-<script type="text/javascript">
-    $(function () {
-        var placeHolder = $('#PlaceHolder');
-        $('button[data-toggle="modal"]').click(function (event) {
-
-            var url = $(this).data('url');
-            $.get(url).done(function (data) {
-                placeHolder.html(data);
-                placeHolder.find('.modal').modal('show');
-                //form.removeData('validator');
-                //form.removeData('unobtrusiveValidation');
-                //$.validator.unobtrusive.parse(form);
-            });
-
-            
-        });
-        
-        placeHolder.on('submit', 'button[class="btn btn-default"]', function (event) {
-           
-            var form = placeHolder.parents('.modal').find('form');
-            //form.removeData('validator');
-            //form.removeData('unobtrusiveValidation');
-            $.validator.unobtrusive.parse(form);
-            form.validate();
-            if (form.valid()) {
-                //if (($('#OrderNumber').val() != '') && ($('#OrderDate').val() != '') && ($('#Status').val() != '') && ($('#Client_Name').val() != '')) {
-                //var getForm = $(this).parents('.modal').find('form');
-                //getForm.removeData('validator');
-                //getForm.removeData('unobtrusiveValidation');
-                //$.validator.unobtrusive.parse(getForm);
-                var getUrl = form.attr('action');
-                var theData = form.serialize();
-                $.post(getUrl, theData, function (data) {
-                    placeHolder.find('.modal').modal('hide');
-                        //location.reload(true);
-                });
-            }
-            
-
-          //  }
-            /*
-            if ($('#OrderNumber').val().trim() == '') {
-                $('#OrderNumber').next('span').show();
-                $('#OrderNumber').css('border', '2px solid red');
-                placeHolder.find('.modal').modal('show');
-
-            }
-            else {
-                $('#OrderNumber').next('span').hide();
-                $('#OrderNumber').css('border', '2px solid grey');
-            }
-            if ($('#OrderDate').val().trim() == '') {
-                $('#OrderDate').next('span').show();
-                $('#OrderDate').css('border', '2px solid red');
-                placeHolder.find('.modal').modal('show');
-
-            }
-            else {
-                $('#OrderDate').next('span').hide();
-                $('#OrderDate').css('border', '2px solid grey');
-            }
-            if ($('#Status').val().trim() == '') {
-                $('#Status').next('span').show();
-                $('#Status').css('border', '2px solid red');
-                placeHolder.find('.modal').modal('show');
-
-            }
-            else {
-                $('#Status').next('span').hide();
-                $('#Status').css('border', '2px solid grey');
-            }
-            if ($('#ClientId').val().trim() == '') {
-                $('#ClientId').next('span').show();
-                $('#ClientId').css('border', '2px solid red');
-                placeHolder.find('.modal').modal('show');
-
-            }
-            else {
-                $('#ClientId').next('span').hide();
-                $('#ClientId').css('border', '2px solid grey');
-            }
-        });
-        */
-        });
-       });
-</script>
-
 <h2>Orders</h2>
 
 <div id="PlaceHolder"></div>
@@ -110,51 +23,55 @@
 }
 else
 {
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayName("Client Name")
-            </th>
-            <th></th>
-        </tr>
+<table style="width:80%">
+    <tr style="border-bottom:1px solid black">
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayName("Client Name")
+        </th>
+        <th></th>
+    </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Client.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }, new { @class = "btn btn-default orangeColor" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }, new { @class = "btn btn-default blueColor" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId }, new { @class = "btn btn-default redColor" })
-                </td>
-            </tr>
-        }
-    </table>
+    @foreach (var item in Model)
+    {
+        <tr class="row2 theRow" style="border-bottom:1px solid black">
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Name)
+            </td>
+            <td style="padding-top:3%;padding-bottom:3%;display:none">
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }, new { @class = "btn btn-default orangeColor" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }, new { @class = "btn btn-default blueColor" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId }, new { @class = "btn btn-default redColor" })
+            </td>
+            <td style="padding-top:0.5%;padding-bottom:3%;cursor:pointer;font-size:300%">
+                ...
+            </td>
+        </tr>
+    }
+
+</table>
 }
 

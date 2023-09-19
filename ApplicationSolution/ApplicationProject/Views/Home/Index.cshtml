@@ -1,33 +1,67 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
 <main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+    <section class="row" aria-labelledby="title">
+        <h1 id="title" style="padding-bottom:4%;padding-top:2%">Welcome to the home page</h1>
+        <p class="lead">The Artworks, Clients, Jobs and Orders can be viewed. </p>
+        <br />
+        <p class="lead">For more information please see the relevant sections below:</p>
+        <br />
+        <div style="background-color:peachpuff;width:60%;padding-top:1%;padding-left:5%;font-size:130%;margin-left:2%;margin-top:2%">
+            <p>Contents</p>
+            <p class="link" style="margin-left:5%;margin-top:5%"><a href="#ArtworkTitle">Artworks</a><span style="display:none"> - Creative works produced by different Jobs</span></p>
+            <p class="link" style="margin-left:5%"><a href="#ClientTitle">Clients</a><span style="display:none"> - Customers that can make Orders of Artworks they need</span></p>
+            <p class="link" style="margin-left:5%"><a href="#JobTitle">Jobs</a><span style="display:none"> - Create Artworks that can be placed for order</span></p>
+            <p class="link" style="margin-left:5%"><a href="#OrderTitle">Orders</a><span style="display:none"> - Artworks made by Jobs can be ordered by Clients</span></p>
+        </div>
     </section>
-
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
+    <br />
+    <div class="row" style="width:100%;margin-top:5%">
+        <section class="col-md-4" aria-labelledby="ArtworkTitle" style="width:100%;padding:5%">
+            <h2 id="ArtworkTitle">Artworks</h2>
+            <img src="../Artwork.png" alt="Artwork" style="height:80%;width:40%;float:right;margin-left:10%;margin-top:5%">
+            <p style="margin-top:7%">
+                Artworks can be created and deleted and if there is a need to change the details can be edited too.
             </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            <p style="margin-top:5%">To get started please click here:</p>
+            <p style="margin-top:5%">@Html.ActionLink("View Artworks", "Index", "Artworks")</p>
         </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <br />
+    <div class="row" style="width:100%;margin-top:5%">
+        <section class="col-md-4" aria-labelledby="ClientTitle" style="width:100%;padding:5%">
+            <h2 id="ClientTitle">Clients</h2>
+            <img src="../Client.png" alt="Client" style="height:80%;width:40%;float:left;margin-right:10%;margin-top:5%">
+            <p style="margin-top:7%">
+                Clients can be created and deleted and if there is a need to change the details can be edited too.
+            </p>
+            <p style="margin-top:5%">To get started please click here:</p>
+            <p style="margin-top:5%">@Html.ActionLink("View Clients", "Index", "Clients")</p>
         </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+    <br />
+    <div class="row" style="width:100%;margin-top:5%">
+        <section class="col-md-4" aria-labelledby="JobTitle" style="width:100%;padding:5%">
+            <h2 id="JobTitle">Jobs</h2>
+            <img src="../Job.png" alt="Job" style="height:80%;width:40%;float:right;margin-left:10%;margin-top:5%">
+            <p style="margin-top:7%">
+                Jobs can be created and deleted and if there is a need to change the details can be edited too.
+            </p>
+            <p style="margin-top:5%">To get started please click here:</p>
+            <p style="margin-top:5%">@Html.ActionLink("View Jobs", "Index", "Jobs")</p>
+        </section>
+    </div>
+    <br />
+    <div class="row" style="width:100%;margin-top:5%">
+        <section class="col-md-4" aria-labelledby="OrderTitle" style="width:100%;padding:5%">
+            <h2 id="OrderTitle">Orders</h2>
+            <img src="../Order.png" alt="Order" style="height:80%;width:40%;float:left;margin-right:10%;margin-top:5%">
+            <p style="margin-top:7%">
+                Orders can be created and deleted and if there is a need to change the details can be edited too.
+            </p>
+            <p style="margin-top:5%">To get started please click here:</p>
+            <p style="margin-top:5%">@Html.ActionLink("View Orders", "Index", "Orders")</p>
         </section>
     </div>
 </main>

@@ -13,7 +13,107 @@
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var placeHolder = $('#PlaceHolder');
+            $('button[data-toggle="modal"]').click(function (event) {
+
+                var url = $(this).data('url');
+                $.get(url).done(function (data) {
+                    placeHolder.html(data);
+                    placeHolder.find('.modal').modal('show');
+                    //form.removeData('validator');
+                    //form.removeData('unobtrusiveValidation');
+                    //$.validator.unobtrusive.parse(form);
+                });
+
+
+            });
+
+            placeHolder.on('submit', 'button[class="btn btn-default"]', function (event) {
+
+                var form = placeHolder.parents('.modal').find('form');
+                //form.removeData('validator');
+                //form.removeData('unobtrusiveValidation');
+                $.validator.unobtrusive.parse(form);
+                form.validate();
+                if (form.valid()) {
+                    //if (($('#OrderNumber').val() != '') && ($('#OrderDate').val() != '') && ($('#Status').val() != '') && ($('#Client_Name').val() != '')) {
+                    //var getForm = $(this).parents('.modal').find('form');
+                    //getForm.removeData('validator');
+                    //getForm.removeData('unobtrusiveValidation');
+                    //$.validator.unobtrusive.parse(getForm);
+                    var getUrl = form.attr('action');
+                    var theData = form.serialize();
+                    $.post(getUrl, theData, function (data) {
+                        placeHolder.find('.modal').modal('hide');
+                        //location.reload(true);
+                    });
+                }
+
+
+                //  }
+                /*
+                if ($('#OrderNumber').val().trim() == '') {
+                    $('#OrderNumber').next('span').show();
+                    $('#OrderNumber').css('border', '2px solid red');
+                    placeHolder.find('.modal').modal('show');
+
+                }
+                else {
+                    $('#OrderNumber').next('span').hide();
+                    $('#OrderNumber').css('border', '2px solid grey');
+                }
+                if ($('#OrderDate').val().trim() == '') {
+                    $('#OrderDate').next('span').show();
+                    $('#OrderDate').css('border', '2px solid red');
+                    placeHolder.find('.modal').modal('show');
+
+                }
+                else {
+                    $('#OrderDate').next('span').hide();
+                    $('#OrderDate').css('border', '2px solid grey');
+                }
+                if ($('#Status').val().trim() == '') {
+                    $('#Status').next('span').show();
+                    $('#Status').css('border', '2px solid red');
+                    placeHolder.find('.modal').modal('show');
+
+                }
+                else {
+                    $('#Status').next('span').hide();
+                    $('#Status').css('border', '2px solid grey');
+                }
+                if ($('#ClientId').val().trim() == '') {
+                    $('#ClientId').next('span').show();
+                    $('#ClientId').css('border', '2px solid red');
+                    placeHolder.find('.modal').modal('show');
+
+                }
+                else {
+                    $('#ClientId').next('span').hide();
+                    $('#ClientId').css('border', '2px solid grey');
+                }
+            });
+            */
+            });
+            $('.row2 td:last-child').click(function () {
+                $(this).prev().toggle();
+
+
+            });
+
+            $('.link a').hover(function () {
+                $(this).next('span').show();
+            }, function () {
+                $(this).next('span').hide();
+            });
+        });
+    </script>
     <style type="text/css">
+        body {
+            background-color: whitesmoke;
+        }
         .orangeColor, .orangeColor:hover {
             background-color: orange;
             color: white;
@@ -41,6 +141,18 @@
         th, td:not(:last-child) {
             padding-top: 15px;
         }
+
+
+        .theRow:hover, div.row:hover {
+            background-color: gainsboro;
+        }
+        div.row:hover {
+            font-size: 135%;
+        }
+        img:hover {
+            width: 70%;
+            height:100%;
+        }
     </style>
 
 
@@ -56,7 +168,6 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Artworks", "Index", "Artworks", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Clients", "Index", "Clients", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Jobs", "Index", "Jobs", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Orders", "Index", "Orders", new { area = "" }, new { @class = "nav-link" })</li>

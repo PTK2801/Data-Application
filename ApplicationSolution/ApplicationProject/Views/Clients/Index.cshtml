@@ -16,8 +16,8 @@
 }
 else
 {
-<table class="table">
-    <tr>
+<table style="width:80%">
+    <tr style="border-bottom:1px solid black">
         <th>
             @Html.DisplayNameFor(model => model.ClientId)
         </th>
@@ -38,7 +38,7 @@ else
 
   @foreach (var item in Model)
   {
-    <tr>
+    <tr class="row2 theRow" style="border-bottom:1px solid black">
         <td>
             @Html.DisplayFor(modelItem => item.ClientId)
         </td>
@@ -54,10 +54,13 @@ else
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
         </td>
-        <td>
+        <td style="padding-top:3%;padding-bottom:3%;display:none">
             @Html.ActionLink("Edit", "Edit", new { id = item.ClientId }, new { @class = "btn btn-default orangeColor" }) |
             @Html.ActionLink("Details", "Details", new { id = item.ClientId }, new { @class = "btn btn-default blueColor" }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ClientId }, new { @class = "btn btn-default redColor" })
+        </td>
+        <td style="padding-top:0.5%;padding-bottom:3%;cursor:pointer;font-size:300%">
+            ...
         </td>
     </tr>
   }
